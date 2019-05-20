@@ -12,8 +12,8 @@
     </Window.Resources>
     
     <Grid>
-        <view:ArrowLoad/>
-        <view:LineLoadView MaximumValue="300" MinimumValue="0" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <view:RoundLoad MaximumValue="300" MinimumValue="0"/>
+        <view:ArrowLoad VerticalAlignment="Bottom"/>
+       <!-- <view:LineLoadView MaximumValue="300" MinimumValue="0" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <view:RoundLoad MaximumValue="300" MinimumValue="0"/> -->
     </Grid>
 </Window>

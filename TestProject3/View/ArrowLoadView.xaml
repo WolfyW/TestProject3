@@ -6,7 +6,23 @@
              xmlns:local="clr-namespace:TestProject3.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Ellipse Fill="Brown" Height="100" Width="100"></Ellipse>
+    <Grid Height="100">
+        <StackPanel>
+            <Ellipse Fill="LightGray" Height="200" Width="200"/>
+            
+            <Rectangle Width="5" Height="90" Fill="Black">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform Y="-190" X="-2.5"/>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            
+            <Ellipse Fill="Black" Height="10" Width="10">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform Y="-195"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </StackPanel>
+        
+        
     </Grid>
 </UserControl>
