@@ -50,8 +50,8 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private double centerY;
-        public double CenterY
+        private long centerY;
+        public long CenterY
         {
             get
             {
@@ -62,16 +62,6 @@ namespace TestProject3.ViewModel
                 centerY = value;
                 OnPropertyChanged();
             }
-        }
-
-        public long MaxValue
-        {
-            get { return model.Maxvalue; }
-        }
-
-        public long MinValue
-        {
-            get { return model.MinValue; }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
