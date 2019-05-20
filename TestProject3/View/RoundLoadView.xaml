@@ -7,6 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            <Ellipse Fill="Aqua" Height="50" Width="50"></Ellipse>
+        <StackPanel Orientation="Horizontal">
+            <Ellipse Fill="Aqua" Height="300" Width="300"></Ellipse>
+            <Ellipse Fill="Green" Height="{Binding Value}" Width="{Binding Value}">
+                <Ellipse.RenderTransform>
+                    <TranslateTransform X="{Binding CenterY}"/>
+                </Ellipse.RenderTransform>
+            </Ellipse>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -41,11 +41,25 @@ namespace TestProject3.ViewModel
             get
             {
                 return model.Value;
-                
             }
             set
             {
                 model.Value = value;
+                CenterY = -((model.Maxvalue + model.Value) / 2);
+                OnPropertyChanged();
+            }
+        }
+
+        private double centerY;
+        public double CenterY
+        {
+            get
+            {
+                return centerY;
+            }
+            set
+            {
+                centerY = value;
                 OnPropertyChanged();
             }
         }

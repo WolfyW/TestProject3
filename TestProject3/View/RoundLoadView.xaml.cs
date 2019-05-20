@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestProject3.Model;
+using TestProject3.ViewModel;
 
 namespace TestProject3.View
 {
@@ -20,9 +23,32 @@ namespace TestProject3.View
     /// </summary>
     public partial class RoundLoad : UserControl
     {
+        LoadPanelModel model = new LoadPanelModel();
         public RoundLoad()
         {
             InitializeComponent();
+            DataContext = new LineViewModel(model);
+        }
+
+        [DisplayName(@"MaximumValue"), Description("максимальное значение"), Category("Values"), DefaultValue(100)]
+        public long MaximumValue
+        {
+            get { return model.Maxvalue; }
+            set { model.Maxvalue = value; }
+        }
+
+        [DisplayName(@"MinimumValue"), Description("минимальное значение"), Category("Values"), DefaultValue(0)]
+        public long MinimumValue
+        {
+            get { return model.MinValue; }
+            set { model.MinValue = value; }
+        }
+
+        [DisplayName(@"Value"), Description("текущее значение"), DefaultValue(0)]
+        public long CurrentValue
+        {
+            get { return model.Value; }
+            set { model.Value = value; }
         }
     }
 }
