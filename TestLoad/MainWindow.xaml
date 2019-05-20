@@ -13,7 +13,7 @@
     
     <Grid>
         <view:ArrowLoad/>
-        <view:LineLoadView MaximumValue="300" MinimumValue="0"/>
+        <view:LineLoadView MaximumValue="300" MinimumValue="0" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <view:RoundLoad/>
     </Grid>
 </Window>

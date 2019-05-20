@@ -8,13 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <StackPanel>
-            <Rectangle x:Name="OutterRec" Width="{Binding MaxValue}" Height="100" Fill="#FFBB1B1B" >
-                   
+        <StackPanel Orientation="Horizontal">
+            <Rectangle x:Name="OutterRec" Width="300" Height="50" Fill="DarkGray">
+
             </Rectangle>
-            <Rectangle Height="{Binding ElementName=OutterRec, Path=Height}" Width="{Binding Value}" Fill="Blue">
+            <Rectangle  Height="{Binding ElementName=OutterRec, Path=Height}" Width="{Binding Value}" Fill="Green" HorizontalAlignment="Left">
                 <Rectangle.RenderTransform>
-                    <TranslateTransform Y="-100"/>
+                    <TranslateTransform X="-300"/>
                 </Rectangle.RenderTransform>
             </Rectangle>
         </StackPanel>
