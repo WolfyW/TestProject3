@@ -16,12 +16,13 @@ namespace TestProject3.ViewModel
         private DispatcherTimer timer = new DispatcherTimer();
         protected LoadPanelModel model;
         protected double oneStep;
-        const int maxWidth = 300;
+        protected int maxWidth;
 
         public LineViewModel(LoadPanelModel model)
         {
             this.model = model;
             model.ChangeValue += MathStep;
+            maxWidth = 300;
             InitTimer();
         }
 
@@ -45,9 +46,9 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private long lastValue;
-        private long currentValue;
-        public virtual long Value
+        private   double lastValue;
+        protected double currentValue;
+        public    double Value
         {
             get
             {
@@ -65,7 +66,7 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private int step;
+        private double step;
         protected virtual void MathStep(object sender, EventArgs e)
         {
             long interval =  model.Maxvalue - model.MinValue;

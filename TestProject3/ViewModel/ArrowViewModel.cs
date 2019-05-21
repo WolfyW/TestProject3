@@ -11,7 +11,10 @@ namespace TestProject3.ViewModel
     class ArrowViewModel : LineViewModel
     {
         public ArrowViewModel(LoadPanelModel model) : base(model)
-        { }
+        {
+            maxWidth = 270;
+            currentValue = min;
+        }
 
         private const int min = -135;
         private const int max = 135;
@@ -27,24 +30,6 @@ namespace TestProject3.ViewModel
                 model.MarkColor = value;
                 OnPropertyChanged();
             }
-        }
-
-        private double angel;
-        public double Angel
-        {
-            get { return angel; }
-            set
-            {
-                angel = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public override long Value { get; set; }
-
-        protected override void MathStep(object sender, EventArgs e)
-        {
-            base.MathStep(sender, e);
         }
     }
 }

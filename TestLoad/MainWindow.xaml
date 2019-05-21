@@ -14,9 +14,9 @@
     <Grid>
         
         <StackPanel>
-            <!-- <view:ArrowLoad VerticalAlignment="center" MaximumValue="300" MinimumValue="0" ColorMark="Black" ColorBack="Aqua" ColorIndicator="DarkRed"/> -->
-            <view:LineLoadView MaximumValue="100" MinimumValue="0" ColorBack="Navy" ColorIndicator="Blue" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <view:RoundLoad MaximumValue="50" MinimumValue="0" ColorBack="DarkRed" ColorIndicator="Aqua"/>
+            <!-- <view:ArrowLoad VerticalAlignment="center" MaximumValue="500" MinimumValue="-150" ColorMark="Black" ColorBack="Aqua" ColorIndicator="DarkRed"/>
+            <view:LineLoadView MaximumValue="100" MinimumValue="0" ColorBack="Navy" ColorIndicator="Blue" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/> -->
+            <view:RoundLoad MaximumValue="50" MinimumValue="-200" ColorBack="DarkRed" ColorIndicator="Aqua"/>
         </StackPanel>
         
     </Grid>

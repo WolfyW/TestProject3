@@ -14,11 +14,11 @@
     <Grid x:Name="baseGrid">
         <Ellipse Fill="{Binding BackgroundColor, Converter={StaticResource ColorConvert}}" Height="200" Width="200"/>
 
-        <Rectangle Width="4" Height="90" Fill="{Binding IndicatorColor, Converter={StaticResource ColorConvert}}" RenderTransformOrigin="0.5,1">
+        <Rectangle Width="4" Height="90" Fill="{Binding IndicatorColor, Converter={StaticResource ColorConvert}}" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform Y="-45"/>
-                    <RotateTransform Angle="{Binding Angel}"/>
+                    <RotateTransform Angle="{Binding Value}"/>
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>

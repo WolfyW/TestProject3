@@ -34,7 +34,7 @@ namespace TestProject3.View
         }
 
         [DisplayName(@"Value"), Description("текущее значение"), DefaultValue(0)]
-        public long CurrentValue
+        public double CurrentValue
         {
             get { return model.Value; }
             set { model.Value = value; }

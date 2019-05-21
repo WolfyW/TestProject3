@@ -34,7 +34,7 @@ namespace TestProject3.Model
             }
         }
 
-        public long Value{get;set;}
+        public double Value{get;set;}
         public Color MarkColor { get; set; }
         public Color IndicatorColor { get; set; } = Colors.Green;
         public Color BackgroundColor { get; set; } = Colors.LightGray;
