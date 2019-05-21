@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using TestProject3.Model;
 using TestProject3.ViewModel;
 
@@ -29,7 +18,7 @@ namespace TestProject3.View
             InitializeComponent();
             DataContext = new LineViewModel(model);
         }
-        
+
         [DisplayName(@"MaximumValue"), Description("максимальное значение"), Category("Values"), DefaultValue(100)]
         public long MaximumValue
         {
@@ -49,6 +38,20 @@ namespace TestProject3.View
         {
             get { return model.Value; }
             set { model.Value = value; }
+        }
+
+        [DisplayName(@"ColorIndicator"), Description("Цвет указателя заполнения"), DefaultValue("Green")]
+        public Color ColorIndicator
+        {
+            get { return model.IndicatorColor; }
+            set { model.IndicatorColor = value; }
+        }
+
+        [DisplayName(@"ColorBack"), Description("Цвет фона"), DefaultValue("LightGray")]
+        public Color ColorBack
+        {
+            get { return model.BackgroundColor; }
+            set { model.BackgroundColor = value; }
         }
     }
 }

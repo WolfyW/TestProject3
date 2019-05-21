@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Threading;
 using TestProject3.Model;
 
@@ -13,55 +14,97 @@ namespace TestProject3.ViewModel
     class LineViewModel : INotifyPropertyChanged
     {
         private DispatcherTimer timer = new DispatcherTimer();
-        private LoadPanelModel model;
+        protected LoadPanelModel model;
+        protected double oneStep;
+        const int maxWidth = 300;
 
         public LineViewModel(LoadPanelModel model)
         {
             this.model = model;
+            model.ChangeValue += MathStep;
             InitTimer();
         }
 
         private void InitTimer()
         {
-            timer.Interval = TimeSpan.FromMilliseconds(50);
+            timer.Interval = TimeSpan.FromMilliseconds(20);
             timer.Tick += TimerTick;
             timer.Start();
         }
 
         private void TimerTick(object sender, object e)
         {
-            if (Value < model.Maxvalue)
-                Value++;
+            if (model.Value < model.Maxvalue)
+            {
+                model.Value++;
+                Value = model.Value;
+            }
             else
+            {
                 timer.Stop();
+            }
         }
 
-        public long Value
+        private long lastValue;
+        private long currentValue;
+        public virtual long Value
         {
             get
             {
-                return model.Value;
+                return currentValue;
             }
             set
             {
                 model.Value = value;
-                CenterY = -((model.Maxvalue + model.Value) / 2);
-                OnPropertyChanged();
+                if (model.Value - lastValue >= oneStep)
+                {
+                    lastValue = model.Value;
+                    currentValue += step;
+                    OnPropertyChanged();
+                }
             }
         }
 
-        private long centerY;
-        public long CenterY
+        private int step;
+        protected virtual void MathStep(object sender, EventArgs e)
+        {
+            long interval =  model.Maxvalue - model.MinValue;
+            oneStep = Math.Abs(interval) * 1.0 / maxWidth * 1.0;
+            if (oneStep < 1)
+            {
+                step = (int)(1 / oneStep);
+            }
+            else
+            {
+                step = 1;
+            }
+        }
+
+        public Color BackgroundColor
         {
             get
             {
-                return centerY;
+                return model.BackgroundColor;
             }
             set
             {
-                centerY = value;
+                model.BackgroundColor = value; 
                 OnPropertyChanged();
             }
+
+        }
+        public Color IndicatorColor
+        {
+            get
+            {
+                return model.IndicatorColor;
+            }
+            set
+            {
+                model.IndicatorColor = value;
+                OnPropertyChanged();
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
