@@ -16,7 +16,9 @@ namespace TestProject3.ViewModel
         private DispatcherTimer timer = new DispatcherTimer();
         protected LoadPanelModel model;
         protected double oneStep;
-        protected int maxWidth;
+        protected double maxWidth;
+        protected double interval;
+        protected double step;
 
         public LineViewModel(LoadPanelModel model)
         {
@@ -46,9 +48,9 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private   double lastValue;
+        private double lastValue;
         protected double currentValue;
-        public    double Value
+        public double Value
         {
             get
             {
@@ -66,10 +68,15 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private double step;
+        private void T()
+        {
+            double a = Value - model.MinValue;
+            a = Math.Abs(a) / interval;
+        }
+
         protected virtual void MathStep(object sender, EventArgs e)
         {
-            long interval =  model.Maxvalue - model.MinValue;
+            interval =  model.Maxvalue - model.MinValue;
             oneStep = Math.Abs(interval) * 1.0 / maxWidth * 1.0;
             if (oneStep < 1)
             {
