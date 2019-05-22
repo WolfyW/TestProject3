@@ -8,30 +8,30 @@ namespace TestProject3.ViewModel
     {
         public ArrowViewModel(LoadPanelModel model) : base(model)
         {
-            maxWidth = Math.Abs(min) + max;
-            Value = min;
+            MaxWidth = Math.Abs(Min) + Max;
+            Value = Min;
         }
 
-        private const int min = -135;
-        private const int max = 135;
+        private const int Min = -135;
+        private const int Max = 135;
 
         public Color ColorMark
         {
             get
             {
-                return model.MarkColor;
+                return Model.MarkColor;
             }
             set
             {
-                model.MarkColor = value;
+                Model.MarkColor = value;
                 OnPropertyChanged();
             }
         }
 
         protected override void ChangeValue(object sender, EventArgs e)
         {
-            double k = Math.Abs(model.Value - model.MinValue) / interval;
-            Value = k * maxWidth - Math.Abs(min);
+            double k = Math.Abs(Model.Value - Model.MinValue) / Interval;
+            Value = k * MaxWidth - Math.Abs(Min);
         }
     }
 }

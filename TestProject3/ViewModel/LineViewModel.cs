@@ -8,29 +8,29 @@ namespace TestProject3.ViewModel
 {
     class LineViewModel : INotifyPropertyChanged
     {
-        protected LoadPanelModel model;
-        protected double maxWidth;
-        protected double interval;
-        private const int max = 300;
+        protected LoadPanelModel Model;
+        protected double MaxWidth;
+        protected double Interval;
+        private const int Max = 300;
 
         public LineViewModel(LoadPanelModel model)
         {
-            this.model = model;
+            this.Model = model;
             model.ChangeLimitValue += MathInterval;
             model.ChangeValue += ChangeValue;
-            maxWidth = max;
+            MaxWidth = Max;
         }
 
-        private double currentValue;
+        private double _currentValue;
         protected double Value
         {
             get
             {
-                return currentValue;
+                return _currentValue;
             }
             set
             {
-                currentValue = value;
+                _currentValue = value;
                 Console.WriteLine("Value: " + Value);
                 OnPropertyChanged();
             }
@@ -38,25 +38,25 @@ namespace TestProject3.ViewModel
 
         protected virtual void ChangeValue(object sender, EventArgs e)
         {
-            double k = Math.Abs(model.Value - model.MinValue) / interval;
-            Value = k * maxWidth;
+            double k = Math.Abs(Model.Value - Model.MinValue) / Interval;
+            Value = k * MaxWidth;
         }
 
         private void MathInterval(object sender, EventArgs e)
         {
-            model.Value = model.MinValue;
-            interval =  model.Maxvalue - model.MinValue;
+            Model.Value = Model.MinValue;
+            Interval =  Model.Maxvalue - Model.MinValue;
         }
 
         public Color BackgroundColor
         {
             get
             {
-                return model.BackgroundColor;
+                return Model.BackgroundColor;
             }
             set
             {
-                model.BackgroundColor = value; 
+                Model.BackgroundColor = value; 
                 OnPropertyChanged();
             }
 
@@ -65,11 +65,11 @@ namespace TestProject3.ViewModel
         {
             get
             {
-                return model.IndicatorColor;
+                return Model.IndicatorColor;
             }
             set
             {
-                model.IndicatorColor = value;
+                Model.IndicatorColor = value;
                 OnPropertyChanged();
             }
 

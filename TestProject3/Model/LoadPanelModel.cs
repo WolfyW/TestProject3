@@ -8,26 +8,26 @@ namespace TestProject3.Model
         public event EventHandler ChangeLimitValue;
         public event EventHandler ChangeValue;
 
-        private double maxValue;
-        private double minValue;
-        private double currentValue;
+        private double _maxValue;
+        private double _minValue;
+        private double _currentValue;
 
         public double Maxvalue
         {
-            get { return maxValue; }
+            get { return _maxValue; }
             set
             {
-                maxValue = value;
+                _maxValue = value;
                 ChangeLimitValue?.Invoke(this, new EventArgs());
             }
         }
 
         public double MinValue
         {
-            get { return minValue; }
+            get { return _minValue; }
             set
             {
-                minValue = value;
+                _minValue = value;
                 ChangeLimitValue?.Invoke(this, new EventArgs());
             }
         }
@@ -36,12 +36,12 @@ namespace TestProject3.Model
         {
             get
             {
-                return currentValue;
+                return _currentValue;
                 
             }
             set
             {
-                currentValue = value;
+                _currentValue = value;
                 ChangeValue?.Invoke(this, new EventArgs());
             }
         }
