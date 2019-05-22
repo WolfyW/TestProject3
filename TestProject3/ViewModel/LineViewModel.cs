@@ -23,7 +23,8 @@ namespace TestProject3.ViewModel
         public LineViewModel(LoadPanelModel model)
         {
             this.model = model;
-            model.ChangeValue += MathStep;
+            model.ChangeLimitValue += MathInterval;
+            model.ChangeValue += ChangeValue;
             maxWidth = 300;
             InitTimer();
         }
@@ -40,7 +41,8 @@ namespace TestProject3.ViewModel
             if (model.Value < model.Maxvalue)
             {
                 model.Value++;
-                Value = model.Value;
+                Console.WriteLine("model: " + model.Value);
+                Console.WriteLine("Value: " + Value);
             }
             else
             {
@@ -48,7 +50,6 @@ namespace TestProject3.ViewModel
             }
         }
 
-        private double lastValue;
         protected double currentValue;
         public double Value
         {
@@ -58,34 +59,21 @@ namespace TestProject3.ViewModel
             }
             set
             {
-                model.Value = value;
-                if (model.Value - lastValue >= oneStep)
-                {
-                    lastValue = model.Value;
-                    currentValue += step;
-                    OnPropertyChanged();
-                }
+                currentValue = value;
+                OnPropertyChanged();
             }
         }
 
-        private void T()
+        protected virtual void ChangeValue(object sender, EventArgs e)
         {
-            double a = Value - model.MinValue;
-            a = Math.Abs(a) / interval;
+            double k = Math.Abs(model.Value - model.MinValue) / interval;
+            Value = k * maxWidth;
         }
 
-        protected virtual void MathStep(object sender, EventArgs e)
+        private void MathInterval(object sender, EventArgs e)
         {
+            model.Value = model.MinValue;
             interval =  model.Maxvalue - model.MinValue;
-            oneStep = Math.Abs(interval) * 1.0 / maxWidth * 1.0;
-            if (oneStep < 1)
-            {
-                step = (int)(1 / oneStep);
-            }
-            else
-            {
-                step = 1;
-            }
         }
 
         public Color BackgroundColor

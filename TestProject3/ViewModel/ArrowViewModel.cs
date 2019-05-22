@@ -12,8 +12,8 @@ namespace TestProject3.ViewModel
     {
         public ArrowViewModel(LoadPanelModel model) : base(model)
         {
-            maxWidth = 270;
-            currentValue = min;
+            maxWidth = Math.Abs(min) + max;
+            Value = min;
         }
 
         private const int min = -135;
@@ -30,6 +30,12 @@ namespace TestProject3.ViewModel
                 model.MarkColor = value;
                 OnPropertyChanged();
             }
+        }
+
+        protected override void ChangeValue(object sender, EventArgs e)
+        {
+            double k = Math.Abs(model.Value - model.MinValue) / interval;
+            Value = k * maxWidth - Math.Abs(min);
         }
     }
 }
