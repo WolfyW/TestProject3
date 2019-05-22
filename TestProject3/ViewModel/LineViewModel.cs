@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
-using System.Windows.Threading;
 using TestProject3.Model;
 
 namespace TestProject3.ViewModel
 {
     class LineViewModel : INotifyPropertyChanged
     {
-        private DispatcherTimer timer = new DispatcherTimer();
         protected LoadPanelModel model;
-        protected double oneStep;
         protected double maxWidth;
         protected double interval;
-        protected double step;
 
         public LineViewModel(LoadPanelModel model)
         {
@@ -26,32 +18,10 @@ namespace TestProject3.ViewModel
             model.ChangeLimitValue += MathInterval;
             model.ChangeValue += ChangeValue;
             maxWidth = 300;
-            InitTimer();
         }
 
-        private void InitTimer()
-        {
-            timer.Interval = TimeSpan.FromMilliseconds(20);
-            timer.Tick += TimerTick;
-            timer.Start();
-        }
-
-        private void TimerTick(object sender, object e)
-        {
-            if (model.Value < model.Maxvalue)
-            {
-                model.Value++;
-                Console.WriteLine("model: " + model.Value);
-                Console.WriteLine("Value: " + Value);
-            }
-            else
-            {
-                timer.Stop();
-            }
-        }
-
-        protected double currentValue;
-        public double Value
+        private double currentValue;
+        protected double Value
         {
             get
             {
@@ -60,6 +30,7 @@ namespace TestProject3.ViewModel
             set
             {
                 currentValue = value;
+                Console.WriteLine("Value: " + Value);
                 OnPropertyChanged();
             }
         }

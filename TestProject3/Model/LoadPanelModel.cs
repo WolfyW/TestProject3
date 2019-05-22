@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace TestProject3.Model
@@ -13,11 +8,11 @@ namespace TestProject3.Model
         public event EventHandler ChangeLimitValue;
         public event EventHandler ChangeValue;
 
-        private long maxValue;
-        private long minValue;
+        private double maxValue;
+        private double minValue;
         private double currentValue;
 
-        public long Maxvalue
+        public double Maxvalue
         {
             get { return maxValue; }
             set
@@ -27,7 +22,7 @@ namespace TestProject3.Model
             }
         }
 
-        public long MinValue
+        public double MinValue
         {
             get { return minValue; }
             set

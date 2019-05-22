@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestProject3.Converters;
 using TestProject3.Model;
@@ -24,14 +15,36 @@ namespace TestProject3.View
     /// </summary>
     public partial class ArrowLoad : UserControl
     {
+        public static readonly DependencyProperty ValueProperty;
+        public static readonly DependencyProperty MaxvalueProperty;
+        public static readonly DependencyProperty MinvalueProperty;
+
+        static ArrowLoad()
+        {
+            ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(ArrowLoad), new PropertyMetadata(default(double), OnValuePropertiesChange));
+            MaxvalueProperty = DependencyProperty.Register("MaxValue", typeof(double), typeof(ArrowLoad), new PropertyMetadata(default(double), OnValuePropertiesChange));
+            MinvalueProperty = DependencyProperty.Register("MinValue", typeof(double), typeof(ArrowLoad), new PropertyMetadata(default(double), OnValuePropertiesChange));
+        }
+
+        private static void OnValuePropertiesChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            switch (e.Property.Name)
+            {
+                case "Value": model.Value = (double)e.NewValue; break;
+                case "MaxValue": model.Maxvalue = (double)e.NewValue; break;
+                case "MinValue": model.MinValue = (double)e.NewValue; break;
+                default: break;
+            }
+        }
+
+        private static LoadPanelModel model = new LoadPanelModel();
+
         public ArrowLoad()
         {
             InitializeComponent();
             DataContext = new ArrowViewModel(model);
             AddMark();
         }
-
-        private LoadPanelModel model = new LoadPanelModel();
 
         private void AddMark()
         {
@@ -57,46 +70,46 @@ namespace TestProject3.View
             }
         }
 
-        [DisplayName(@"MaximumValue"), Description("максимальное значение"), Category("Values"), DefaultValue(100)]
-        public long MaximumValue
+        [DisplayName(@"MaxValue"), Description("максимальное значение"), Category("Values"), DefaultValue(100)]
+        public double MaxValue
         {
-            get { return model.Maxvalue; }
-            set { model.Maxvalue = value; }
+            get { return (double)GetValue(MaxvalueProperty); }
+            set { SetValue(MaxvalueProperty, value); }
         }
 
-        [DisplayName(@"MinimumValue"), Description("минимальное значение"), Category("Values"), DefaultValue(0)]
-        public long MinimumValue
+        [DisplayName(@"MinValue"), Description("минимальное значение"), Category("Values"), DefaultValue(0)]
+        public double MinValue
         {
-            get { return model.MinValue; }
-            set { model.MinValue = value; }
+            get { return (double)GetValue(MinvalueProperty); }
+            set { SetValue(MinvalueProperty, value); }
         }
 
-        [DisplayName(@"Value"), Description("текущее значение"), DefaultValue(0)]
-        public double CurrentValue
+        [DisplayName(@"Value"), Description("текущее значение"), Category("Values"), DefaultValue(0)]
+        public double Value
         {
-            get { return model.Value; }
-            set { model.Value = value; }
+            get { return (double)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
         }
 
-        [DisplayName(@"ColorMark"), Description("Цвет рисок"), DefaultValue("Black")]
-        public Color ColorMark
-        {
-            get { return model.MarkColor; }
-            set { model.MarkColor = value; }
-        }
-
-        [DisplayName(@"ColorIndicator"), Description("Цвет указателя заполнения"), DefaultValue("Blcak")]
+        [DisplayName(@"ColorIndicator"), Description("Цвет указателя заполнения"), Category("Colors"), DefaultValue("Blcak")]
         public Color ColorIndicator
         {
             get { return model.IndicatorColor; }
             set { model.IndicatorColor = value; }
         }
 
-        [DisplayName(@"ColorBack"), Description("Цвет фона"), DefaultValue("LightGray")]
+        [DisplayName(@"ColorBack"), Description("Цвет фона"), Category("Colors"), DefaultValue("LightGray")]
         public Color ColorBack
         {
             get { return model.BackgroundColor; }
             set { model.BackgroundColor = value; }
+        }
+
+        [DisplayName(@"ColorMark"), Description("Цвет рисок"), Category("Colors"), DefaultValue("Black")]
+        public Color ColorMark
+        {
+            get { return model.MarkColor; }
+            set { model.MarkColor = value; }
         }
     }
 }

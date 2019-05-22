@@ -6,16 +6,20 @@
         xmlns:local="clr-namespace:TestLoad"
         xmlns:view="clr-namespace:TestProject3.View;assembly=TestProject3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Window.Resources>
-        
-    </Window.Resources>
-
+        Title="MainWindow" Height="696" Width="525">
     <Grid>
         <StackPanel>
-            <view:ArrowLoad VerticalAlignment="center" MaximumValue="-50" MinimumValue="-150" ColorMark="Black" ColorBack="Aqua" ColorIndicator="DarkRed"/>
-            <view:LineLoadView MaximumValue="100" MinimumValue="0" ColorBack="Navy" ColorIndicator="Blue" Margin="5,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <view:RoundLoad MaximumValue="-100" MinimumValue="-200" ColorBack="DarkRed" ColorIndicator="Aqua"/>
+            <TextBlock Text="Value"/>
+            <TextBox Text="{Binding ElementName=Slider, Path=Value, Mode=TwoWay}"/>
+            <TextBlock Text="Max"/>
+            <TextBox Text="{Binding ElementName=Slider, Path=Maximum, Mode=TwoWay}"/>
+            <TextBlock Text="Min"/>
+            <TextBox Text="{Binding ElementName=Slider, Path=Minimum, Mode=TwoWay}"/>
+            <Slider x:Name="Slider" Value="0" Minimum="-1000" Maximum="1000" SelectionStart="0" Height="30" IsSelectionRangeEnabled="True"/>
+            <view:ArrowLoad VerticalAlignment="center" Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorMark="Black" ColorBack="Aqua" ColorIndicator="DarkRed"/>
+            <view:RoundLoad VerticalAlignment="Center" Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorIndicator="Aqua" ColorBack="AntiqueWhite"/>
+            <view:LineLoad VerticalAlignment="Center"  Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorIndicator="Green" ColorBack="LightGray"/>
         </StackPanel>
+        
     </Grid>
 </Window>
