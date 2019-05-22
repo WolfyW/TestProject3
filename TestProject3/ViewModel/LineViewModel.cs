@@ -11,13 +11,14 @@ namespace TestProject3.ViewModel
         protected LoadPanelModel model;
         protected double maxWidth;
         protected double interval;
+        private const int max = 300;
 
         public LineViewModel(LoadPanelModel model)
         {
             this.model = model;
             model.ChangeLimitValue += MathInterval;
             model.ChangeValue += ChangeValue;
-            maxWidth = 300;
+            maxWidth = max;
         }
 
         private double currentValue;
