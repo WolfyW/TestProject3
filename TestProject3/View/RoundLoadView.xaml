@@ -5,14 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestProject3.View"
              xmlns:converts="clr-namespace:TestProject3.Converters"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <converts:ColorConvert x:Key="ColorConvert"/>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid Height="300" Width="300">
         <Ellipse Height="300" Width="300" Fill="{Binding BackgroundColor, Converter={StaticResource ColorConvert}}"/>
 
         <Ellipse Height="{Binding Value}" Width="{Binding Value}" Fill="{Binding IndicatorColor, Converter={StaticResource ColorConvert}}"/>

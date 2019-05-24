@@ -16,10 +16,10 @@
             <TextBlock Text="Min"/>
             <TextBox Text="{Binding ElementName=Slider, Path=Minimum, Mode=TwoWay}"/>
             <Slider x:Name="Slider" Value="0" Minimum="-1000" Maximum="1000" SelectionStart="0" Height="30" IsSelectionRangeEnabled="True"/>
-            <view:ArrowLoad VerticalAlignment="center" Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorMark="Black" ColorBack="Aqua" ColorIndicator="DarkRed"/>
+            <view:ArrowLoad VerticalAlignment="center" Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorMark="Black" ColorBack="Gray" ColorIndicator="Pink"/>
             <view:RoundLoad VerticalAlignment="Center" Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorIndicator="Aqua" ColorBack="AntiqueWhite"/>
             <view:LineLoad VerticalAlignment="Center"  Value="{Binding ElementName=Slider, Path=Value}" MaxValue="{Binding ElementName=Slider, Path=Maximum}" MinValue="{Binding ElementName=Slider, Path=Minimum}" ColorIndicator="Green" ColorBack="LightGray"/>
-        </StackPanel>
+      </StackPanel>
         
     </Grid>
 </Window>

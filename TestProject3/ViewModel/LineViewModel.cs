@@ -22,7 +22,7 @@ namespace TestProject3.ViewModel
         }
 
         private double _currentValue;
-        protected double Value
+        public double Value
         {
             get
             {
@@ -32,7 +32,7 @@ namespace TestProject3.ViewModel
             {
                 _currentValue = value;
                 Console.WriteLine("Value: " + Value);
-                OnPropertyChanged();
+                OnPropertyChanged("Value");
             }
         }
 
@@ -76,7 +76,7 @@ namespace TestProject3.ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        public void OnPropertyChanged(/*[CallerMemberName]*/string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
